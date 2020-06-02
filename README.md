@@ -11,4 +11,11 @@ R and command line code for Reduced responsiveness of general stress response ge
 * Interaction types - Strength 
 
 ## Command line
-* TO DO
+* Bioconda
+* Trinity
+* N50 and ExN50
+* CD-Hit-est
+* BUSCO
+* HISAT2
+* Samtools
+* Salmon
