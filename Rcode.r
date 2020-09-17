@@ -1,5 +1,6 @@
-#Reduced responsiveness of general stress response genes contributes to the higher toxicity of a pesticide under warming 
-#Vienna Delnat, Janne Swaegers, Jana Asselman and Robby Stoks
+#Reduced stress defense responses contribute to the higher toxicity of a pesticide under warming. 
+#Delnat V., Swaegers J., Asselman A., and Stoks R. (2020). 
+#Molecular Ecology, accepted.
 #R code tested on 01/06/2020
 
 ######Packages#######
