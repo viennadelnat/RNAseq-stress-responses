@@ -272,21 +272,21 @@ graph2ppt(file="PCAplot_DEGs", width=9, height=6, append=TRUE)
 ######Interaction types: Frequency#######
 #Numbers extracted from 'SupplementaryK_InteractionType.xlsx' using Pivot Table 
 
-dataAntagonistic=read.table("./InteractionTypeFrequency/Antagonistic.txt", sep="\t", header=TRUE)
+dataAntagonistic=read.table("./InteractionType_Frequency_Antagonistic.txt", sep="\t", header=TRUE)
 row.names(dataAntagonistic)=c("Antagonistic","Non-Antagonistic")
 Antagonistic=data.matrix(dataAntagonistic, rownames.force = NA)
 Antagonistic
 barplot(Antagonistic, beside=T, legend=T)
 fisher.test(Antagonistic,alternative = "two.sided",  conf.int=T, conf.level=0.95)
 
-dataSynergistic=read.table("./InteractionTypeFrequency/Synergistic.txt", sep="\t", header=TRUE)
+dataSynergistic=read.table("./InteractionType_Frequency_Synergistic.txt", sep="\t", header=TRUE)
 row.names(dataSynergistic)=c("Synergistic","Non-Synergistic")
 Synergistic=data.matrix(dataSynergistic, rownames.force = NA)
 Synergistic
 barplot(Synergistic, beside=T, legend=T)
 fisher.test(Synergistic,alternative = "two.sided",  conf.int=T, conf.level=0.95)
 
-dataAdditive=read.table("./InteractionTypeFrequency/Additive.txt", sep="\t", header=TRUE)
+dataAdditive=read.table("./InteractionType_Frequency_Additive.txt", sep="\t", header=TRUE)
 row.names(dataAdditive)=c("Additive","Non-Additive")
 Additive=data.matrix(dataAdditive, rownames.force = NA)
 Additive
