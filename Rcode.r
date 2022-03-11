@@ -65,13 +65,18 @@ dds10 <- dds[keep,]
 
 ######DESeq2#######
 #Contrast 1: 24°C-solvent control vs 20°C-solvent control (single effect of warming)
-DESeqWarmingSolventControl=results(dds10, alpha=0.05, contrast=c("group", "warming.control", "ambient.control"))
+DESeqWarmingSolventControl=results(dds10, alpha=0.05, lfcThreshold=1, contrast=c("group", "warming.control", "ambient.control"))
+DESeqWarmingSolventControlALL = as.data.frame(DESeqWarmingSolventControl[order(DESeqWarmingSolventControl$log2FoldChange),])
+write.table(DESeqWarmingSolventControlALL,file="DESeqWarmingSolventControlALL.txt", sep='\t', quote=F)
 summary(DESeqWarmingSolventControl)
 DESeqDEGsWarmingSolventControl=subset(DESeqWarmingSolventControl,padj < 0.05 & abs(log2FoldChange) > 1) 
 DESeqDEGsWarmingSolventControl = as.data.frame(DESeqDEGsWarmingSolventControl[order(DESeqDEGsWarmingSolventControl$log2FoldChange),])
 write.table(DESeqDEGsWarmingSolventControl,file="DESeqDEGsWarmingSolventControl.txt", sep='\t', quote=F)
 
 #Contrast 2: 20°C-low-effect chlorpyrifos vs 20°C-solvent control (single effect of low-effect chlorpyrifos)
+DESeqAmbientLowChlorpyrifos=results(dds10, alpha=0.05, lfcThreshold=1, contrast=c("group", "ambient.low", "ambient.control"))
+DESeqAmbientLowChlorpyrifosALL = as.data.frame(DESeqAmbientLowChlorpyrifos[order(DESeqAmbientLowChlorpyrifos$log2FoldChange),])
+write.table(DESeqAmbientLowChlorpyrifosALL,file="DESeqAmbientLowChlorpyrifosALL.txt", sep='\t', quote=F)
 DESeqAmbientLowChlorpyrifos=results(dds10, alpha=0.05, contrast=c("group", "ambient.low", "ambient.control"))
 summary(DESeqAmbientLowChlorpyrifos)
 DESeqDEGsAmbientLowChlorpyrifos=subset(DESeqAmbientLowChlorpyrifos,padj < 0.05 & abs(log2FoldChange) > 1) 
@@ -79,6 +84,9 @@ DESeqDEGsAmbientLowChlorpyrifos = as.data.frame(DESeqDEGsAmbientLowChlorpyrifos[
 write.table(DESeqDEGsAmbientLowChlorpyrifos,file="DESeqDEGsAmbientLowChlorpyrifos.txt", sep='\t', quote=F)
 
 #Contrast 3: 20°C-high-effect chlorpyrifos vs 20°C-solvent control (single effect of high-effect chlorpyrifos)
+DESeqAmbientHighChlorpyrifos=results(dds10, alpha=0.05, lfcThreshold=1, contrast=c("group", "ambient.high", "ambient.control"))
+DESeqAmbientHighChlorpyrifosALL = as.data.frame(DESeqAmbientHighChlorpyrifos[order(DESeqAmbientHighChlorpyrifos$log2FoldChange),])
+write.table(DESeqAmbientHighChlorpyrifosALL,file="DESeqAmbientHighChlorpyrifosALL.txt", sep='\t', quote=F)
 DESeqAmbientHighChlorpyrifos=results(dds10, alpha=0.05, contrast=c("group", "ambient.high", "ambient.control"))
 summary(DESeqAmbientHighChlorpyrifos)
 DESeqDEGsAmbientHighChlorpyrifos=subset(DESeqAmbientHighChlorpyrifos,padj < 0.05 & abs(log2FoldChange) > 1) 
@@ -86,18 +94,72 @@ DESeqDEGsAmbientHighChlorpyrifos = as.data.frame(DESeqDEGsAmbientHighChlorpyrifo
 write.table(DESeqDEGsAmbientHighChlorpyrifos,file="DESeqDEGsAmbientHighChlorpyrifos.txt", sep='\t', quote=F)
 
 #Contrast 4: 24°C-low-effect chlorpyrifos vs 20°C-solvent control (combined effect of low-effect chlorpyrifos and warming)
-DESeqWarmingLowChlorpyrifos=results(dds10, alpha=0.05, contrast=c("group", "warming.low", "ambient.control"))
+DESeqWarmingLowChlorpyrifos=results(dds10, alpha=0.05, lfcThreshold=1, contrast=c("group", "warming.low", "ambient.control"))
+DESeqWarmingLowChlorpyrifosALL = as.data.frame(DESeqWarmingLowChlorpyrifos[order(DESeqWarmingLowChlorpyrifos$log2FoldChange),])
+write.table(DESeqWarmingLowChlorpyrifosALL,file="DESeqWarmingLowChlorpyrifosALL.txt", sep='\t', quote=F)
 summary(DESeqWarmingLowChlorpyrifos)
 DESeqDEGsWarmingLowChlorpyrifos=subset(DESeqWarmingLowChlorpyrifos,padj < 0.05 & abs(log2FoldChange) > 1) 
 DESeqDEGsWarmingLowChlorpyrifos = as.data.frame(DESeqDEGsWarmingLowChlorpyrifos[order(DESeqDEGsWarmingLowChlorpyrifos$log2FoldChange),])
 write.table(DESeqDEGsWarmingLowChlorpyrifos,file="DESeqDEGsWarmingLowChlorpyrifos.txt", sep='\t', quote=F)
 
 #Contrast 5: 24°C-high-effect chlorpyrifos vs 20°C-solvent control (combined effect of high-effect chlorpyrifos and warming)
-DESeqWarmingHighChlorpyrifos=results(dds10, alpha=0.05, contrast=c("group", "warming.high", "ambient.control"))
+DESeqWarmingHighChlorpyrifos=results(dds10, alpha=0.05, lfcThreshold=1, contrast=c("group", "warming.high", "ambient.control"))
+DESeqWarmingHighChlorpyrifosALL = as.data.frame(DESeqWarmingHighChlorpyrifos[order(DESeqWarmingHighChlorpyrifos$log2FoldChange),])
+write.table(DESeqWarmingHighChlorpyrifosALL,file="DESeqWarmingHighChlorpyrifosALL.txt", sep='\t', quote=F)
 summary(DESeqWarmingHighChlorpyrifos)
 DESeqDEGsWarmingHighChlorpyrifos=subset(DESeqWarmingHighChlorpyrifos,padj < 0.05 & abs(log2FoldChange) > 1) 
 DESeqDEGsWarmingHighChlorpyrifos = as.data.frame(DESeqDEGsWarmingHighChlorpyrifos[order(DESeqDEGsWarmingHighChlorpyrifos$log2FoldChange),])
 write.table(DESeqDEGsWarmingHighChlorpyrifos,file="DESeqDEGsWarmingHighChlorpyrifos.txt", sep='\t', quote=F)
+
+
+######Venn diagram#######
+
+AmbientLowChlorpyrifos=row.names(DESeqDEGsAmbientLowChlorpyrifos)
+AmbientHighChlorpyrifos=row.names(DESeqDEGsAmbientHighChlorpyrifos)
+WarmingSolventControl=row.names(DESeqDEGsWarmingSolventControl)
+
+install.packages("VennDiagram")
+library(VennDiagram)
+
+venn.diagram(x=list(AmbientLowChlorpyrifos, AmbientHighChlorpyrifos, WarmingSolventControl), 
+             category.names=c("(a) 20°C-low-effect chlorpyrifos", "(b) 20°C-high-effect chlorpyrifos", "(c) warming (24°C-solvent control)"),
+             cat.default.pos = "outer", cat.pos = c(-18, 18, 170), cex= 4, cat.cex = 2, fill = c("grey53", "grey29","grey11"),
+             resolution = 300, filename = 'Venn_diagram_General_Stress_Response.png', output=TRUE)
+
+#Not used, only DEGs with known blast were used. Venn diagram was made in venny version 2.1 (Oliveros, 2015)             
+
+######Reaction norm######
+
+install.packages("reshape")     
+install.packages("lattice")     
+library(reshape)
+library(lattice)
+
+#Log2FC values of DEGs present in contrast 1, 2 and 3 (main effects, effect of single stressors) with a fully defined blast annotation
+LFC_BlastGeneralStressDefence=read.table("BlastReactionNormMainEffects.txt", sep="\t", header=TRUE)
+graph.data.blast<-melt(LFC_BlastGeneralStressDefence, id=c("replicate"))
+
+#Plot graph and save it as svg (further editing can be done in e.g. InkScape)
+svg("ReactionNorms_GeneralStressDefenceBlast.svg", width = 9, height = 9)
+xyplot(value~  variable, group=as.factor(replicate), 
+       cex=1.5, layout=(c(1,1)), pch=16, lty=1, col="black",
+       type = c("p","l"), data=graph.data.blast, scales=list(tck=c(1,1),
+       xlab =list(label="Treatment",fontsize=13), ylab = list(label=expression(paste("LogFC")),fontsize=13), 
+       x=list(cex=1.0, labels=c("24°C Control","20°C Low CPF","20°C High CPF")), y=list(cex=1.0)))
+dev.off()
+
+#Log2FC values of all DEGs present in contrast 1, 2 and 3 (main effects, effect of single stressors)
+LFC_AllGeneralStressDefence=read.table("AllReactionNormMainEffects.txt", sep="\t", header=TRUE)
+graph.data.all<-melt(LFC_AllGeneralStressDefence, id=c("replicate"))
+
+#Plot graph and save it as svg (further editing can be done in e.g. InkScape)
+svg("ReactionNorms_GeneralStressDefenceAll.svg", width = 9, height = 9)
+xyplot(value~  variable, group=as.factor(replicate), 
+      cex=1.5, layout=(c(1,1)), pch=16, lty=1, col="grey",
+      type = c("p","l"), data=graph.data.all, scales=list(tck=c(1,1),
+      xlab =list(label="Treatment",fontsize=13), ylab = list(label=expression(paste("LogFC")),fontsize=13), 
+      x=list(cex=1.0, labels=c("24°C Control","20°C Low CPF","20°C High CPF")), y=list(cex=1.0)))
+dev.off()
 
 
 ######MA plot#######
