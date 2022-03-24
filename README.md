@@ -2,7 +2,8 @@
 R and command line code for 'Reduced stress defense responses contribute to the higher toxicity of a pesticide under warming'
 
 Delnat V., Swaegers J., Asselman A., and Stoks R. (2020). 
-Molecular Ecology, accepted.
+
+Molecular Ecology, accepted. DOI: 10.1111/mec.15667
 
 ## R code
 * Import of count files generated using Salmon
