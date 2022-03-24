@@ -5,6 +5,8 @@ Delnat V., Swaegers J., Asselman A., and Stoks R. (2020).
 
 Molecular Ecology, accepted. DOI: 10.1111/mec.15667
 
+Data on Dryad: www.datadryad.org/stash/dataset/doi:10.5061%2Fdryad.jdfn2z38w
+
 ## R code
 * Import of count files generated using Salmon
 * DESeq2 analysis and the contrasts
